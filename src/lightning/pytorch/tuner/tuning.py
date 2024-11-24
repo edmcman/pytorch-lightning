@@ -39,6 +39,7 @@ class Tuner:
         mode: str = "power",
         steps_per_trial: int = 3,
         init_val: int = 2,
+        max_val = 2 ** 25,
         max_trials: int = 25,
         batch_arg_name: str = "batch_size",
     ) -> Optional[int]:
@@ -65,6 +66,7 @@ class Tuner:
                 Ideally 1 should be enough to test if an OOM error occurs,
                 however in practise a few are needed
             init_val: initial batch size to start the search with
+            max_val: max batch size that may be searched
             max_trials: max number of increases in batch size done before
                algorithm is terminated
             batch_arg_name: name of the attribute that stores the batch size.
@@ -86,6 +88,7 @@ class Tuner:
             mode=mode,
             steps_per_trial=steps_per_trial,
             init_val=init_val,
+            max_val=max_val,
             max_trials=max_trials,
             batch_arg_name=batch_arg_name,
         )
